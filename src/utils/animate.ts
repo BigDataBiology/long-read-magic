@@ -18,10 +18,8 @@ const useStickyEffect = (elementId: string, topOffset = 0) => {
       if (window.innerWidth >= 768) {
         const element = document.getElementById(elementId)
         const scrollTop = window.scrollY
-
         if(element) {
         const elementParentBottom = elementTop + element.parentElement.getBoundingClientRect().height
-
         if (
           scrollTop >= elementTop - topOffset &&
           scrollTop <= elementParentBottom + elementParentBottom * 0.025 ) {
@@ -74,6 +72,5 @@ export const animateOnScroll = () => {
     }
   });
 };
-
 
 export default useStickyEffect;

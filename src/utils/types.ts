@@ -17,6 +17,11 @@ export interface AttributesProps {
     linkUrl?: string
     linkString?: string
     subTitle?: string
+    image?: string
+    paragraph?: Array<object>
+    imageHero?: Array<object>
+    imageForm?: Array<object>
+    illustrationImage?: Array<object>
 
   }
   
@@ -28,12 +33,13 @@ export interface AttributesProps {
     name?: string
     url?: string
     alt?: string
-
   }
   export interface TabProps {
     name: string
     content: Array<ItemProps>
     workflow: Array<ItemProps>
+    link?: string
+
   }
 
   export interface FormProps {
@@ -62,12 +68,11 @@ export interface AttributesProps {
       title: string,
       description: string,
       subTitle?: string,
-      content?: string
-      image?: Array<ItemProps>,
+      contentResources?: string
+      imageResources?: Array<ItemProps>,
       imageHero?: Array<ItemProps>,
       tools?: Array<ItemProps>,
     },
-    content: string,
   }
 
   export interface ToolProps {
@@ -80,4 +85,13 @@ export interface AttributesProps {
     drawbacks?: string,
   }
   
+  export interface TermsOfUseProps {
+    title: string,
+    paragraph: string,
+  }
+
+ export  type ImageProps = {
+    url: string
+    alt: string
+  }
 

@@ -4,17 +4,27 @@ import fs from 'fs'
 import matter from 'gray-matter'
 
 import Image from 'next/image'
-import imageContact from '@/public/images/about_contact-min.png'
 
 import ContactForm from '@/components/ContactForm'
 
-import { AttributesProps } from '@/utils/types'
+import { AttributesProps, ImageProps} from '@/utils/types'
 
-import { handleSubmitForm } from '../utils/form'
+import { handleSubmitForm } from '@/utils/form'
 
-const Contact = ({ dataContact }) => {
-  const { title: titleForm, description: descriptionForm } =
-    dataContact as AttributesProps
+const Contact = ({ dataContact, dataThanks, contentThanks }) => {
+  const {
+    title: titleForm,
+    description: descriptionForm,
+    imageForm
+  } = dataContact as AttributesProps
+  const { url: urlImageForm, alt: altImageForm } = imageForm[0] as ImageProps
+  const {
+    title: titleThanks,
+    description: descriptionThanks,
+    linkUrl: linkUrlThanks,
+    linkString: linkStringThanks,
+  } = dataThanks as AttributesProps
+
   return (
     <>
       <Head>
@@ -23,8 +33,9 @@ const Contact = ({ dataContact }) => {
       </Head>
       <div className="relative h-full">
         <Image
-          src={imageContact}
-          alt="Image stem cells"
+          src={urlImageForm}
+          alt={altImageForm}
+
           fill
           className="bg-lightgray bg-opacity-50 object-cover object-center"
         />
@@ -43,6 +54,11 @@ const Contact = ({ dataContact }) => {
               onSubmit={handleSubmitForm}
               notBackground
               buttondark
+              titleThanks={titleThanks}
+              descriptionThanks={descriptionThanks}
+              contentThanks={contentThanks}
+              linkUrlThanks={linkUrlThanks}
+              linkStringThanks={linkStringThanks}
             />
           </div>
         </div>
@@ -56,13 +72,19 @@ export default Contact
 export async function getStaticProps() {
   try {
     const fileContact = fs.readFileSync(
-        `${process.cwd()}/content/homePage/contactForm.md`,
+        `${process.cwd()}/content/contactForm/datasContactForm.md`,
         'utf-8'
       ),
       { data: dataContact } = matter(fileContact)
+    const filesThanks = fs.readFileSync(
+      `${process.cwd()}/content/thanks/datas.md`
+    )
+    const { data: dataThanks, content: contentThanks } = matter(filesThanks)
     return {
       props: {
         dataContact: JSON.parse(JSON.stringify(dataContact)),
+        dataThanks: JSON.parse(JSON.stringify(dataThanks)),
+        contentThanks: contentThanks,
       },
     }
   } catch (error) {

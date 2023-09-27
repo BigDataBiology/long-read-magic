@@ -1,5 +1,4 @@
-
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -12,14 +11,12 @@ import Button from '@/components/Button'
 
 import useStickyEffect, { animateOnScroll } from '@/utils/animate'
 
-import imageHero from '@/public/images/genome_image.png'
 import imageAbout from '@/public/images/homepage_image_part2.png'
-import imageSection2 from '@/public/images/homepage_image_part3.png'
-import imageSection4 from '@/public/images/homepage_image_part4-min.png'
 import logoGithub from '@/public/images/github.png'
 import logoGithubHover from '@/public/images/github_hover.png'
 
-import { AttributesProps, ItemProps, TabProps } from '@/utils/types'
+import { AttributesProps, ImageProps, ItemProps, TabProps } from '@/utils/types'
+
 
 import { handleSubmitForm } from '../utils/form'
 
@@ -27,12 +24,15 @@ const HeroComponent: React.FC<AttributesProps> = ({
   title,
   description,
   buttonName,
+  imageUrl,
+  imageAlt,
+
 }) => {
   return (
     <div className="relative h-[450px] w-full sm:h-[900px]">
       <Image
-        src={imageHero}
-        alt="Image stem cells"
+        src={imageUrl}
+        alt={imageAlt}
         fill
         className="bg-lightgray bg-opacity-50 object-cover object-center"
       />
@@ -58,7 +58,7 @@ const HeroComponent: React.FC<AttributesProps> = ({
           <div className="text-base 2xl:text-2xl">
             <Link
               aria-label='explore more about "Genome"'
-              href="#"
+              href="/genomes"
               className="hover:shadow-buttonShadow-type3 mt-4 rounded-sm border border-white bg-transparent px-6 py-2.5 text-white hover:border-buttonColor-type3 hover:bg-white hover:text-textColor-blue"
             >
               {buttonName}
@@ -78,25 +78,42 @@ export default function Home({
   dataSection3,
   dataSection4,
   dataContact,
+  dataThanks,
+  contentThanks,
 }) {
-  const { title, description, buttonName } = dataHero as AttributesProps
+  const { title, description, buttonName, imageHero } =
+    dataHero as AttributesProps
+  const { url: urlHero, alt: altHero } = imageHero[0] as ImageProps
   const { title: titleAbout, content: descriptionAbout } =
     dataSection1 as AttributesProps
   const { title: titleSection3, content: descriptionSection3 } =
     dataSection3 as AttributesProps
-  const { title: titleSection2, description: descriptionSection2 } =
-    dataSection2 as AttributesProps
+  const {
+    title: titleSection2,
+    description: descriptionSection2,
+    illustrationImage,
+  } = dataSection2 as AttributesProps
 
+  const { url: urlImageSection2, alt: altImageSection2 } =
+    illustrationImage[0] as ImageProps
   const {
     title: titleSection4,
     description: descriptionSection4,
     link,
     nameLink,
     tabs,
+    illustrationImage: imageSection4,
   } = dataSection4 as AttributesProps
+  const { url: urlImageSection4, alt: altImageSection4 } =
+    imageSection4[0] as ImageProps
   const { title: titleForm, description: descriptionForm } =
     dataContact as AttributesProps
-
+  const {
+    title: titleThanks,
+    description: descriptionThanks,
+    linkUrl: linkUrlThanks,
+    linkString: linkStringThanks,
+  } = dataThanks as AttributesProps
 
   // sticky effect on scroll
   const { elementWidth: width1 } = useStickyEffect('sticky1', 300)
@@ -121,6 +138,8 @@ export default function Home({
         title={title}
         description={description}
         buttonName={buttonName}
+        imageUrl={urlHero}
+        imageAlt={altHero}
       />
       <div className="bg-backgroundColor-grey">
         <div className="max-x-[400px]:pb-1 relative grid max-w-[1920px] justify-center bg-backgroundColor-grey pb-36 pt-14 md:grid-cols-2 md:pb-[112px] md:pr-[108px] md:pt-[120px] 2xl:mx-auto">
@@ -151,9 +170,11 @@ export default function Home({
         <div className="relative flex h-[420px] min-h-max w-full max-w-[1920px] items-center justify-center bg-backgroundColor-blue sm:h-full 2xl:mx-auto">
           <div className="relative flex items-center justify-center md:px-10 2xl:px-0">
             <Image
-              src={imageSection2}
-              alt="Background image cells"
+              src={urlImageSection2}
+              alt={altImageSection2}
               sizes="100vw"
+              width={800}
+              height={504}
               className="backdrop-blur-[2px] backdrop-filter"
             />
             <div className="absolute mx-auto flex max-w-[80%] items-center justify-center sm:max-w-[70%]">
@@ -197,8 +218,8 @@ export default function Home({
         >
           <div className="absolute inset-0 ">
             <Image
-              src={imageSection4}
-              alt="background stem cells"
+              src={urlImageSection4}
+              alt={altImageSection4}
               fill
               className="object-cover object-center"
             />
@@ -256,7 +277,7 @@ export default function Home({
                           text={nameLink}
                           logo={logoGithub}
                           logoHover={logoGithubHover}
-                          url={link}
+                          url={tab.link}
                           aria-label="explore workflow"
                         />
                       </div>
@@ -274,6 +295,12 @@ export default function Home({
             description={descriptionForm}
             onSubmit={handleSubmitForm}
             buttonlight
+            titleThanks={titleThanks}
+            descriptionThanks={descriptionThanks}
+            contentThanks={contentThanks}
+            linkUrlThanks={linkUrlThanks}
+            linkStringThanks={linkStringThanks}
+            textBlueColor
           />
         </div>
       </div>
@@ -309,10 +336,14 @@ export async function getStaticProps() {
     const { data: dataSection4 } = matter(fileSection4)
 
     const fileContact = fs.readFileSync(
-        `${process.cwd()}/content/homePage/contactForm.md`,
+        `${process.cwd()}/content/contactForm/datasContactForm.md`,
         'utf-8'
       ),
       { data: dataContact } = matter(fileContact)
+    const filesThanks = fs.readFileSync(
+      `${process.cwd()}/content/thanks/datas.md`
+    )
+    const { data: dataThanks, content: contentThanks } = matter(filesThanks)
 
     return {
       props: {
@@ -322,6 +353,8 @@ export async function getStaticProps() {
         dataSection3: JSON.parse(JSON.stringify(dataSection3)),
         dataSection4: JSON.parse(JSON.stringify(dataSection4)),
         dataContact: JSON.parse(JSON.stringify(dataContact)),
+        dataThanks: JSON.parse(JSON.stringify(dataThanks)),
+        contentThanks,
       },
     }
   } catch (error) {
@@ -330,3 +363,5 @@ export async function getStaticProps() {
   return {
     notFound: true,
   }
+}
+
