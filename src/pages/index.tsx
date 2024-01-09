@@ -104,33 +104,6 @@ export default function Home({
         imageUrl={urlHero}
         imageAlt={altHero}
       />
-      <div className="bg-backgroundColor-grey">
-        <div className="max-x-[400px]:pb-1 relative grid max-w-[1920px] justify-center bg-backgroundColor-grey pb-36 pt-14 md:grid-cols-2 md:pb-[112px] md:pr-[108px] md:pt-[120px] 2xl:mx-auto">
-          <Image
-            src={imageAbout}
-            alt="image cells"
-            className="blur-2 left-0 top-0 opacity-50 md:absolute xl:opacity-100 "
-          />
-          <div className="absolute top-6 mx-4 sm:top-8 md:relative md:top-0 md:ml-[54px] lg:ml-[108px]">
-            <h2
-              className="transform text-4xl font-medium text-textColor-blue duration-700 ease-in-out lg:pl-[54px] lg:text-[52px] "
-              id="sticky1"
-              style={{ width: width1 }}
-            >
-              {titleAbout}
-            </h2>
-          </div>
-          <div className="absolute top-28 mx-4 flex flex-col items-center gap-6 sm:top-48 md:relative md:top-0 md:gap-10 xl:gap-[120px] 2xl:gap-16">
-            {descriptionAbout.map((content: ItemProps, index) => (
-              <div key={`${titleAbout}-${index}`} className="fadeIn-on-scrool">
-                <p className=" text-base leading-6 text-textColor-blue sm:text-lg  md:leading-9 lg:text-[21px]">
-                  {content.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </>
   )
 }
