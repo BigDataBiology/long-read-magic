@@ -289,7 +289,7 @@ export default function Home({
           </div>
         </div>
 
-        <div className="px-4 py-[90px] md:px-[54px] xl:px-[108px]">
+{/*        <div className="px-4 py-[90px] md:px-[54px] xl:px-[108px]">
           <ContactForm
             title={titleForm}
             description={descriptionForm}
@@ -302,7 +302,7 @@ export default function Home({
             linkStringThanks={linkStringThanks}
             textBlueColor
           />
-        </div>
+        </div>*/}
       </div>
     </>
   )
@@ -334,16 +334,6 @@ export async function getStaticProps() {
       `${process.cwd()}/content/homePage/section4.md`
     )
     const { data: dataSection4 } = matter(fileSection4)
-
-    const fileContact = fs.readFileSync(
-        `${process.cwd()}/content/contactForm/datasContactForm.md`,
-        'utf-8'
-      ),
-      { data: dataContact } = matter(fileContact)
-    const filesThanks = fs.readFileSync(
-      `${process.cwd()}/content/thanks/datas.md`
-    )
-    const { data: dataThanks, content: contentThanks } = matter(filesThanks)
 
     return {
       props: {
