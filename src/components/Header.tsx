@@ -12,7 +12,6 @@ const navigation = [
   { name: 'About', href: '/about' },
   { name: 'Genomes', href: '/genomes' },
   { name: 'Taxonomy Tree', href: '/taxonomyTree' },
-  { name: 'Resources', href: '/resources' },
   { name: 'Contact', href: '/contact' },
 ]
 
