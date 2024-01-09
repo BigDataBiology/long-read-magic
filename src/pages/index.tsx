@@ -352,9 +352,6 @@ export async function getStaticProps() {
         dataSection2: JSON.parse(JSON.stringify(dataSection2)),
         dataSection3: JSON.parse(JSON.stringify(dataSection3)),
         dataSection4: JSON.parse(JSON.stringify(dataSection4)),
-        dataContact: JSON.parse(JSON.stringify(dataContact)),
-        dataThanks: JSON.parse(JSON.stringify(dataThanks)),
-        contentThanks,
       },
     }
   } catch (error) {
