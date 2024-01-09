@@ -73,36 +73,11 @@ const HeroComponent: React.FC<AttributesProps> = ({
 
 export default function Home({
   dataHero,
-  dataSection1,
-  dataSection2,
-  dataSection3,
-  dataSection4,
 }) {
   const { title, description, buttonName, imageHero } =
     dataHero as AttributesProps
   const { url: urlHero, alt: altHero } = imageHero[0] as ImageProps
-  const { title: titleAbout, content: descriptionAbout } =
-    dataSection1 as AttributesProps
-  const { title: titleSection3, content: descriptionSection3 } =
-    dataSection3 as AttributesProps
-  const {
-    title: titleSection2,
-    description: descriptionSection2,
-    illustrationImage,
-  } = dataSection2 as AttributesProps
 
-  const { url: urlImageSection2, alt: altImageSection2 } =
-    illustrationImage[0] as ImageProps
-  const {
-    title: titleSection4,
-    description: descriptionSection4,
-    link,
-    nameLink,
-    tabs,
-    illustrationImage: imageSection4,
-  } = dataSection4 as AttributesProps
-  const { url: urlImageSection4, alt: altImageSection4 } =
-    imageSection4[0] as ImageProps
   // sticky effect on scroll
   const { elementWidth: width1 } = useStickyEffect('sticky1', 300)
   const { elementWidth: width2 } = useStickyEffect('sticky2', 300)
