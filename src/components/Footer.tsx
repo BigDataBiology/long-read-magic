@@ -5,7 +5,6 @@ import Link from 'next/link'
 const navigation = [
   { name: 'Genomes', href: '/genomes' },
   { name: 'Tree', href: '/taxonomyTree' },
-  { name: 'Contact', href: '/contact' },
 ]
 
 const terms = [
