@@ -155,127 +155,6 @@ export default function Home({
             ))}
           </div>
         </div>
-        <div className="relative flex h-[420px] min-h-max w-full max-w-[1920px] items-center justify-center bg-backgroundColor-blue sm:h-full 2xl:mx-auto">
-          <div className="relative flex items-center justify-center md:px-10 2xl:px-0">
-            <Image
-              src={urlImageSection2}
-              alt={altImageSection2}
-              sizes="100vw"
-              width={800}
-              height={504}
-              className="backdrop-blur-[2px] backdrop-filter"
-            />
-            <div className="absolute mx-auto flex max-w-[80%] items-center justify-center sm:max-w-[70%]">
-              <div className="rounded bg-backgroundColor-greylight p-2 text-center opacity-80 sm:px-6 sm:py-10">
-                <h2 className="pb-2 text-4xl font-medium text-textColor-blue sm:pb-7 lg:text-[52px]">
-                  {titleSection2}
-                </h2>
-                <p className="leading-1 text-base text-textColor-blue sm:text-lg md:leading-9 lg:text-[21px]">
-                  {descriptionSection2}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="grid max-w-[1920px] bg-backgroundColor-grey pb-[93px] pt-14 md:grid-cols-2 md:pr-[108px] md:pt-[120px] 2xl:mx-auto">
-          <div className=" mx-4 pb-8  md:pl-[54px] md:pr-10 lg:pl-[108px] lg:text-[52px] 2xl:pr-10">
-            <h2
-              className="ease-out-in transform text-4xl font-medium text-textColor-blue duration-100 lg:text-[52px]"
-              id="sticky2"
-              style={{ width: width2 }}
-            >
-              {titleSection3}
-            </h2>
-          </div>
-          <div className="mx-4 flex flex-col items-center md:gap-10 xl:gap-36 2xl:gap-16">
-            {descriptionSection3.map((content: ItemProps, index) => (
-              <div
-                key={`${titleSection3}-${index}`}
-                className="fadeIn-on-scrool"
-              >
-                <p className="text-base leading-9 text-textColor-blue sm:text-lg lg:text-[21px]">
-                  {content.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div
-          className="relative max-w-[1920px] px-6 pb-28 pt-20 2xl:mx-auto"
-          id="sticky2-next"
-        >
-          <div className="absolute inset-0 ">
-            <Image
-              src={urlImageSection4}
-              alt={altImageSection4}
-              fill
-              className="object-cover object-center"
-            />
-            <div
-              className="h-100% absolute inset-0 z-0"
-              style={{
-                background:
-                  'linear-gradient(91deg, #001135 0%, rgba(0, 17, 53, 0.00) 100%)',
-                backdropFilter: 'blur(2px)',
-              }}
-            ></div>
-          </div>
-          <div className="relative flex h-full flex-col gap-6 lg:pl-[54px] lg:pr-[54px]">
-            <div className="md:pl-[54px]">
-              <h2 className="pb-6 text-4xl font-medium text-white md:w-1/2 lg:text-[52px]">
-                {titleSection4}
-              </h2>
-              <p className="text-base leading-9 text-white sm:text-lg md:w-1/2 lg:text-[21px]">
-                {descriptionSection4}
-              </p>
-            </div>
-            <div className="mb-4">
-              <Tabs>
-                {tabs.map((tab: TabProps) => (
-                  <Tab key={tab.name} label={tab.name}>
-                    <div className="backdrop-blur-15 grid rounded bg-opacity-50 bg-gradient-4 p-6 sm:p-[54px] lg:grid-cols-2 lg:gap-[100px]">
-                      <div>
-                        <h2 className="text-2xl font-medium leading-9 text-textColor-blue">
-                          {tab.name}
-                        </h2>
-                        {tab.content.map((item, index) => (
-                          <div
-                            key={`${tab.name}-${index}`}
-                            className="pb-5 pt-6 leading-9"
-                          >
-                            <p className="text-lg text-textColor-blue">
-                              {item.paragraph}
-                            </p>
-                          </div>
-                        ))}
-                      </div>
-                      <div>
-                        <h2 className="text-2xl font-medium leading-9 text-textColor-blue">
-                          Workflow
-                        </h2>
-                        {tab.workflow.map((item, index) => (
-                          <div
-                            key={`workflow-${index}`}
-                            className="pb-5 pt-6 leading-9 text-textColor-blue"
-                          >
-                            <p className="text-lg">{item.paragraph}</p>
-                          </div>
-                        ))}
-                        <Button
-                          text={nameLink}
-                          logo={logoGithub}
-                          logoHover={logoGithubHover}
-                          url={tab.link}
-                          aria-label="explore workflow"
-                        />
-                      </div>
-                    </div>
-                  </Tab>
-                ))}
-              </Tabs>
-            </div>
-          </div>
-        </div>
       </div>
     </>
   )
@@ -288,33 +167,9 @@ export async function getStaticProps() {
     )
     const { data: dataHero } = matter(fileHero)
 
-    const fileSection1 = fs.readFileSync(
-      `${process.cwd()}/content/homePage/section1.md`
-    )
-    const { data: dataSection1 } = matter(fileSection1)
-
-    const fileSection2 = fs.readFileSync(
-      `${process.cwd()}/content/homePage/section2.md`
-    )
-    const { data: dataSection2 } = matter(fileSection2)
-
-    const fileSection3 = fs.readFileSync(
-      `${process.cwd()}/content/homePage/section3.md`
-    )
-    const { data: dataSection3 } = matter(fileSection3)
-
-    const fileSection4 = fs.readFileSync(
-      `${process.cwd()}/content/homePage/section4.md`
-    )
-    const { data: dataSection4 } = matter(fileSection4)
-
     return {
       props: {
         dataHero: JSON.parse(JSON.stringify(dataHero)),
-        dataSection1: JSON.parse(JSON.stringify(dataSection1)),
-        dataSection2: JSON.parse(JSON.stringify(dataSection2)),
-        dataSection3: JSON.parse(JSON.stringify(dataSection3)),
-        dataSection4: JSON.parse(JSON.stringify(dataSection4)),
       },
     }
   } catch (error) {
