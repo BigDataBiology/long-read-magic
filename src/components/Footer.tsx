@@ -3,17 +3,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const navigation = [
-  { name: 'About', href: '/about' },
   { name: 'Genomes', href: '/genomes' },
   { name: 'Tree', href: '/taxonomyTree' },
-  { name: 'Resources', href: '/resources' },
   { name: 'Contact', href: '/contact' },
 ]
 
 const terms = [
-  { name: 'Terms of Use', href: '/termsOfUse' },
-  { name: 'Privacy Policy', href: '/privacyPolicy' },
-  { name: 'Terms of Service', href: '/termsOfService' },
 ]
 
 export function Footer() {
