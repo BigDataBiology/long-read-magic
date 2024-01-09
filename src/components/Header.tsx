@@ -11,7 +11,6 @@ import Image from 'next/image'
 const navigation = [
   { name: 'Genomes', href: '/genomes' },
   { name: 'Taxonomy Tree', href: '/taxonomyTree' },
-  { name: 'Contact', href: '/contact' },
 ]
 
 export function Header() {
