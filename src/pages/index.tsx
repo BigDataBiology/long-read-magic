@@ -77,9 +77,6 @@ export default function Home({
   dataSection2,
   dataSection3,
   dataSection4,
-  dataContact,
-  dataThanks,
-  contentThanks,
 }) {
   const { title, description, buttonName, imageHero } =
     dataHero as AttributesProps
@@ -106,15 +103,6 @@ export default function Home({
   } = dataSection4 as AttributesProps
   const { url: urlImageSection4, alt: altImageSection4 } =
     imageSection4[0] as ImageProps
-  const { title: titleForm, description: descriptionForm } =
-    dataContact as AttributesProps
-  const {
-    title: titleThanks,
-    description: descriptionThanks,
-    linkUrl: linkUrlThanks,
-    linkString: linkStringThanks,
-  } = dataThanks as AttributesProps
-
   // sticky effect on scroll
   const { elementWidth: width1 } = useStickyEffect('sticky1', 300)
   const { elementWidth: width2 } = useStickyEffect('sticky2', 300)
@@ -288,21 +276,6 @@ export default function Home({
             </div>
           </div>
         </div>
-
-{/*        <div className="px-4 py-[90px] md:px-[54px] xl:px-[108px]">
-          <ContactForm
-            title={titleForm}
-            description={descriptionForm}
-            onSubmit={handleSubmitForm}
-            buttonlight
-            titleThanks={titleThanks}
-            descriptionThanks={descriptionThanks}
-            contentThanks={contentThanks}
-            linkUrlThanks={linkUrlThanks}
-            linkStringThanks={linkStringThanks}
-            textBlueColor
-          />
-        </div>*/}
       </div>
     </>
   )
