@@ -64,7 +64,7 @@ The website showcases the quality, genomic content, and taxonomic annotations of
             </p>
           </div>
 
-          <div>
+          <div className="pt-2">
             <p className="font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[21px] md:leading-9 2xl:text-2xl ">
               Pan, S.; Zhu, C.; Zhao, XM.; Coelho, LP. A deep siamese neural network improves metagenome-assembled genomes in microbiome datasets across different environments. Nat Commun 13, 2326 (2022). https://doi.org/10.1038/s41467-022-29843-y
             </p>
