@@ -44,7 +44,7 @@ const HeroComponent: React.FC<AttributesProps> = ({
         }}
       ></div>
       <div className="absolute inset-0 flex">
-        <div className="flex flex-auto flex-col items-start justify-center pb-4 pl-4 pr-4 pt-12 md:pl-[54px] md:pr-[108px] lg:w-2/3 lg:pl-[108px]">
+        <div className="flex flex-auto flex-col items-start justify-center pb-4 pl-4 pr-4 pt-12">
           <div>
             <h1 className="font-inter text-[32px] font-semibold capitalize text-white">
               {title}
