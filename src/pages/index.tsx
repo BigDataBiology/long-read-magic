@@ -50,7 +50,7 @@ const HeroComponent: React.FC<AttributesProps> = ({
               {title}
             </h1>
           </div>
-          <div className="pb-6 pt-2 sm:pb-10 sm:pt-6 md:pb-12">
+          <div className="pb-6 pt-2 sm:pb-10 sm:pt-6 md:pb-12 white-space:pre-line">
             <p className="font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[21px] md:leading-9 2xl:text-2xl">
               {description}
             </p>
