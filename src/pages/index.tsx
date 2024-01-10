@@ -46,12 +46,12 @@ const HeroComponent: React.FC<AttributesProps> = ({
       <div className="absolute inset-0 flex">
         <div className="flex flex-auto flex-col items-start justify-center pb-4 pl-4 pr-4 pt-12 md:pl-[54px] md:pr-[108px] lg:w-2/3 lg:pl-[108px]">
           <div>
-            <h1 className="font-inter text-4xl font-semibold capitalize text-white lg:text-[52px] lg:leading-[4rem] 2xl:text-7xl ">
+            <h1 className="font-inter text-[32px] font-semibold capitalize text-white">
               {title}
             </h1>
           </div>
           <div className="pb-2 pt-6 sm:pb-10 sm:pt-6 md:pb-12">
-            <p className="font-inter gap-x-6 text-[20px] font-normal leading-6 text-white">
+            <p className="font-inter gap-x-6 text-[16px] font-normal leading-6 text-white">
               SemiMAGs is an online resource for Metagenome-Assembled Genomes (MAGs) based on PacBio HiFi sequencing technology. 
 We have curated samples from various sources, including the human gut, sheep gut, and seawater, which have been sequenced using PacBio HiFi technology and subsequently binned using SemiBin2. 
 The website showcases the quality, genomic content, and taxonomic annotations of MAGs obtained through PacBio HiFi sequencing.
@@ -59,25 +59,25 @@ The website showcases the quality, genomic content, and taxonomic annotations of
           </div>
 
           <div>
-            <p className="font-inter gap-x-6 text-[20px] font-normal leading-6 text-white ">
+            <p className="font-inter gap-x-6 text-[16px] font-normal leading-6 text-white ">
               If you utilize our platform, please cite：
             </p>
           </div>
 
           <div>
-            <p className="font-inter gap-x-6 text-[20px] font-normal leading-6 text-white">
+            <p className="font-inter gap-x-6 text-[16px] font-normal leading-6 text-white">
               Pan, S.; Zhu, C.; Zhao, XM.; Coelho, LP. A deep siamese neural network improves metagenome-assembled genomes in microbiome datasets across different environments. Nat Commun 13, 2326 (2022). https://doi.org/10.1038/s41467-022-29843-y
             </p>
           </div>
 
           <div className="pb-6">
-            <p className="font-inter gap-x-6 text-[20px] font-normal leading-6 text-white">
+            <p className="font-inter gap-x-6 text-[16px] font-normal leading-6 text-white">
               Pan, S.; Zhao, XM; Coelho, LP. SemiBin2: self-supervised contrastive learning leads to better MAGs for short- and long-read sequencing. Bioinformatics Volume 39, Issue Supplement_1, June 2023, Pages i21–i29; https://doi.org/10.1093/bioinformatics/btad209
             </p>
           </div>
 
           <div className="pt-2 pb-6">
-            <p className="break-words font-inter gap-x-6 text-[20px] font-normal leading-6 text-white">
+            <p className="break-words font-inter gap-x-6 text-[16px] font-normal leading-6 text-white">
              In this project, we used flye(https://github.com/fenderglass/Flye) to do the assembly, and mapping long reads to the contig with minimap2(https://github.com/lh3/minimap2). 
              SemiBin2(https://github.com/BigDataBiology/SemiBin) is used to bin the contigs.
              After binning, CheckM2(https://github.com/chklovski/CheckM2), GUNC(https://github.com/grp-bork/gunc), tRNAscan-SE(https://github.com/UCSC-LoweLab/tRNAscan-SE) and barrnap(https://github.com/tseemann/barrnap) are used to evaluate the MAGs.
@@ -87,7 +87,7 @@ The website showcases the quality, genomic content, and taxonomic annotations of
 
 
           <div className="pt-2 pb-10">
-            <p className="font-inter gap-x-6 text-[20px] font-normal leading-6 text-white">
+            <p className="font-inter gap-x-6 text-[16px] font-normal leading-6 text-white">
              If you have some questions, please contact Luis Pedro Coelho(luis@luispedro.org) and Shaojun Pan(shaojun1997777@gmail.com).
             </p>
           </div>
