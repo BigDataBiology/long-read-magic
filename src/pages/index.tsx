@@ -51,16 +51,28 @@ const HeroComponent: React.FC<AttributesProps> = ({
             </h1>
           </div>
           <div className="pb-2 pt-2 sm:pb-10 sm:pt-6 md:pb-12">
-            <p className="whitespace-pre-line font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[21px] md:leading-9 2xl:text-2xl ">
+            <p className="font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[21px] md:leading-9 2xl:text-2xl ">
               SemiMAGs is an online resource for Metagenome-Assembled Genomes (MAGs) based on PacBio HiFi sequencing technology. 
 We have curated samples from various sources, including the human gut, sheep gut, and seawater, which have been sequenced using PacBio HiFi technology and subsequently binned using SemiBin2. 
-The website showcases the quality, genomic content, and \n taxonomic annotations of MAGs obtained through PacBio HiFi sequencing.
+The website showcases the quality, genomic content, and taxonomic annotations of MAGs obtained through PacBio HiFi sequencing.
             </p>
           </div>
 
-          <div className="pb-2 pt-2 sm:pb-10 sm:pt-6 md:pb-12">
-            <p className="white-space: pre-line font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[21px] md:leading-9 2xl:text-2xl ">
+          <div className="sm:pb-10 sm:pt-6 md:pb-12">
+            <p className="font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[21px] md:leading-9 2xl:text-2xl ">
               If you utilize our platform, please cite：
+            </p>
+          </div>
+
+          <div className="sm:pb-10 sm:pt-6 md:pb-12">
+            <p className="font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[21px] md:leading-9 2xl:text-2xl ">
+              Pan, S.; Zhu, C.; Zhao, XM.; Coelho, LP. A deep siamese neural network improves metagenome-assembled genomes in microbiome datasets across different environments. Nat Commun 13, 2326 (2022). https://doi.org/10.1038/s41467-022-29843-y
+            </p>
+          </div>
+
+          <div className="pb-6 sm:pb-10 sm:pt-6 md:pb-12">
+            <p className="font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[21px] md:leading-9 2xl:text-2xl ">
+              Pan, S.; Zhao, XM; Coelho, LP. SemiBin2: self-supervised contrastive learning leads to better MAGs for short- and long-read sequencing. Bioinformatics Volume 39, Issue Supplement_1, June 2023, Pages i21–i29; https://doi.org/10.1093/bioinformatics/btad209
             </p>
           </div>
 
