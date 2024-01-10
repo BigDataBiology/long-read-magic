@@ -70,7 +70,7 @@ The website showcases the quality, genomic content, and taxonomic annotations of
             </p>
           </div>
 
-          <div className="pt-2">
+          <div className="pt-2 pb-6">
             <p className="font-inter gap-x-6 text-[20px] font-normal leading-6 text-white">
               Pan, S.; Zhao, XM; Coelho, LP. SemiBin2: self-supervised contrastive learning leads to better MAGs for short- and long-read sequencing. Bioinformatics Volume 39, Issue Supplement_1, June 2023, Pages i21–i29; https://doi.org/10.1093/bioinformatics/btad209
             </p>
