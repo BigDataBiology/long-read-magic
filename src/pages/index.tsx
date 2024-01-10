@@ -50,10 +50,18 @@ const HeroComponent: React.FC<AttributesProps> = ({
               {title}
             </h1>
           </div>
-          <div className="pb-6 pt-2 sm:pb-10 sm:pt-6 md:pb-12 white-space:pre-line">
+          <div className="pb-6 pt-2 sm:pb-10 sm:pt-6 md:pb-12">
             <p className="font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[21px] md:leading-9 2xl:text-2xl">
-              {description}
+              SemiMAGs is an online resource for Metagenome-Assembled Genomes (MAGs) based on PacBio HiFi sequencing technology. 
+We have curated samples from various sources, including the human gut, sheep gut, and seawater, which have been sequenced using PacBio HiFi technology and subsequently binned using SemiBin2. 
+The website showcases the quality, genomic content, and taxonomic annotations of MAGs obtained through PacBio HiFi sequencing. 
             </p>
+            <br>
+            <br>
+            <p className="font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[21px] md:leading-9 2xl:text-2xl">
+            If you utilize our platform, please cite：
+            </p>
+
           </div>
           <div className="text-base 2xl:text-2xl">
             <Link
