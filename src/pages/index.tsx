@@ -76,12 +76,19 @@ The website showcases the quality, genomic content, and taxonomic annotations of
             </p>
           </div>
 
-          <div className="pt-2 pb-10">
+          <div className="pt-2 pb-6">
             <p className="break-words font-inter gap-x-6 text-[20px] font-normal leading-6 text-white">
              In this project, we used flye(https://github.com/fenderglass/Flye) to do the assembly, and mapping long reads to the contig with minimap2(https://github.com/lh3/minimap2). 
              SemiBin2(https://github.com/BigDataBiology/SemiBin) is used to bin the contigs.
              After binning, CheckM2(https://github.com/chklovski/CheckM2), GUNC(https://github.com/grp-bork/gunc), tRNAscan-SE(https://github.com/UCSC-LoweLab/tRNAscan-SE) and barrnap(https://github.com/tseemann/barrnap) are used to evaluate the MAGs.
              Finally, GTDBTk(https://github.com/Ecogenomics/GTDBTk) is used to annotate the contigs.
+            </p>
+          </div>
+
+
+          <div className="pt-2 pb-10">
+            <p className="font-inter gap-x-6 text-[20px] font-normal leading-6 text-white">
+             If you have some questions, please contact Luis Pedro Coelho(luis@luispedro.org) and Shaojun Pan(shaojun1997777@gmail.com).
             </p>
           </div>
 
