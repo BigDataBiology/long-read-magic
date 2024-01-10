@@ -58,7 +58,7 @@ The website showcases the quality, genomic content, and taxonomic annotations of
             </p>
           </div>
 
-          <div className="pb-6 pt-2 sm:pb-10 sm:pt-6 md:pb-12">
+          <div>
             <p className="white-space: pre-line font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[21px] md:leading-9 2xl:text-2xl ">
               If you utilize our platform, please cite：
             </p>
