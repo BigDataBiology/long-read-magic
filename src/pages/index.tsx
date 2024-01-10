@@ -64,13 +64,13 @@ The website showcases the quality, genomic content, and taxonomic annotations of
             </p>
           </div>
 
-          <div className="pt-2">
+          <div>
             <p className="font-inter gap-x-6 text-[20px] font-normal leading-6 text-white">
               Pan, S.; Zhu, C.; Zhao, XM.; Coelho, LP. A deep siamese neural network improves metagenome-assembled genomes in microbiome datasets across different environments. Nat Commun 13, 2326 (2022). https://doi.org/10.1038/s41467-022-29843-y
             </p>
           </div>
 
-          <div className="pt-2 pb-6">
+          <div className="pb-6">
             <p className="font-inter gap-x-6 text-[20px] font-normal leading-6 text-white">
               Pan, S.; Zhao, XM; Coelho, LP. SemiBin2: self-supervised contrastive learning leads to better MAGs for short- and long-read sequencing. Bioinformatics Volume 39, Issue Supplement_1, June 2023, Pages i21–i29; https://doi.org/10.1093/bioinformatics/btad209
             </p>
