@@ -70,9 +70,18 @@ The website showcases the quality, genomic content, and taxonomic annotations of
             </p>
           </div>
 
-          <div className="pb-6">
+          <div className="pt-2 pb-6">
             <p className="font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[21px] md:leading-9 2xl:text-2xl ">
               Pan, S.; Zhao, XM; Coelho, LP. SemiBin2: self-supervised contrastive learning leads to better MAGs for short- and long-read sequencing. Bioinformatics Volume 39, Issue Supplement_1, June 2023, Pages i21–i29; https://doi.org/10.1093/bioinformatics/btad209
+            </p>
+          </div>
+
+          <div className="pt-2 pb-6">
+            <p className="font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[21px] md:leading-9 2xl:text-2xl ">
+             In this project, we used flye(https://github.com/fenderglass/Flye) to do the assembly, and mapping long reads to the contig with minimap2(https://github.com/lh3/minimap2). 
+             SemiBin2(https://github.com/BigDataBiology/SemiBin) is used to bin the contigs.
+             After binning, CheckM2(https://github.com/chklovski/CheckM2), GUNC(https://github.com/grp-bork/gunc), tRNAscan-SE(https://github.com/UCSC-LoweLab/tRNAscan-SE) and barrnap(https://github.com/tseemann/barrnap) are used to evaluate the MAGs.
+             Finally, GTDBTk(https://github.com/Ecogenomics/GTDBTk) is used to annotate the contigs.
             </p>
           </div>
 
