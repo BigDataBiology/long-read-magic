@@ -173,7 +173,8 @@ export const emojis = [
     }]
 
 export const Signature: FC<SignatureProps> = ({className}) => {
-    const rand = Math.floor(Math.random() * emojis.length)
+    const currentMinute = new Date().getMinutes()
+    const rand = Math.floor(currentMinute % emojis.length)
     return (
         <div>
             <span className={className}>Made with </span><span title={emojis[rand].title}>{emojis[rand].emoji}</span>
