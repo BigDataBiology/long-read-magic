@@ -10,7 +10,7 @@ const Hero: React.FC<AttributesProps> = ({
   imageAlt,
 }) => {
   return (
-    <div className="relative h-[350px] w-full sm:h-[450px] 2xl:h-[650px]">
+    <div className="relative  w-full">
       <Image
         src={imageUrl}
         alt={imageAlt}
