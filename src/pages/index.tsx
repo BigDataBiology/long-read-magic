@@ -19,17 +19,20 @@ import { AttributesProps, ImageProps, ItemProps, TabProps } from '@/utils/types'
 
 
 import { handleSubmitForm } from '../utils/form'
+import ReactMarkdown from "react-markdown";
 
 const HeroComponent: React.FC<AttributesProps> = ({
   title,
+  subTitle,
   description,
+  content,
   buttonName,
   imageUrl,
   imageAlt,
 
 }) => {
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-[450px] w-full sm:h-[900px]">
       <Image
         src={imageUrl}
         alt={imageAlt}
@@ -44,62 +47,37 @@ const HeroComponent: React.FC<AttributesProps> = ({
         }}
       ></div>
       <div className="absolute inset-0 flex">
-        <div className="flex flex-auto flex-col items-start justify-center pb-4 pl-4 pr-4 pt-12">
+        <div
+            className="flex flex-auto flex-col items-start justify-center pb-4 pl-4 pr-4 pt-12 md:pl-[54px] md:pr-[108px] lg:w-2/3 lg:pl-[108px]">
           <div>
-            <h1 className="font-inter text-[32px] font-semibold capitalize text-white sm:text-[24px]">
+            <h3 className="font-inter text-xl font-semibold capitalize text-white lg:text-[26px] lg:leading-[4rem] 2xl:text-7xl ">
               {title}
-            </h1>
+            </h3>
           </div>
-          <div className="pb-2 pt-6 sm:pb-10 sm:pt-6 md:pb-12">
-            <p className="font-inter gap-x-6 text-[16px] font-normal leading-6 text-white sm:text-[12px]">
-              SemiMAGs is an online resource for Metagenome-Assembled Genomes (MAGs) based on PacBio HiFi sequencing technology. 
-We have curated samples from various sources, including the human gut, sheep gut, and seawater, which have been sequenced using PacBio HiFi technology and subsequently binned using SemiBin2. 
-The website showcases the quality, genomic content, and taxonomic annotations of MAGs obtained through PacBio HiFi sequencing.
+          <div className="pb-6 pt-2 sm:pb-10 sm:pt-6 md:pb-12">
+            <p className="font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[16px] md:leading-9 2xl:text-lg">
+              {description}
             </p>
           </div>
-
-          <div>
-            <p className="font-inter gap-x-6 text-[16px] font-normal leading-6 text-white sm:text-[12px]">
-              If you utilize our platform, please cite：
-            </p>
-          </div>
-
-          <div>
-            <p className="font-inter gap-x-6 text-[16px] font-normal leading-6 text-white sm:text-[12px]">
-              Pan, S.; Zhu, C.; Zhao, XM.; Coelho, LP. A deep siamese neural network improves metagenome-assembled genomes in microbiome datasets across different environments. Nat Commun 13, 2326 (2022). https://doi.org/10.1038/s41467-022-29843-y
-            </p>
-          </div>
-
-          <div className="pb-6">
-            <p className="font-inter gap-x-6 text-[16px] font-normal leading-6 text-white sm:text-[12px]">
-              Pan, S.; Zhao, XM; Coelho, LP. SemiBin2: self-supervised contrastive learning leads to better MAGs for short- and long-read sequencing. Bioinformatics Volume 39, Issue Supplement_1, June 2023, Pages i21–i29; https://doi.org/10.1093/bioinformatics/btad209
-            </p>
-          </div>
-
-          <div className="pt-2 pb-6">
-            <p className="break-words font-inter gap-x-6 text-[16px] font-normal leading-6 text-white sm:text-[12px]">
-             In this project, we used flye(https://github.com/fenderglass/Flye) to do the assembly, and mapping long reads to the contig with minimap2(https://github.com/lh3/minimap2). 
-             SemiBin2(https://github.com/BigDataBiology/SemiBin) is used to bin the contigs.
-             After binning, CheckM2(https://github.com/chklovski/CheckM2), GUNC(https://github.com/grp-bork/gunc), tRNAscan-SE(https://github.com/UCSC-LoweLab/tRNAscan-SE) and barrnap(https://github.com/tseemann/barrnap) are used to evaluate the MAGs.
-             Finally, GTDBTk(https://github.com/Ecogenomics/GTDBTk) is used to annotate the contigs.
-            </p>
-          </div>
-
-
-          <div className="pt-2 pb-10">
-            <p className="font-inter gap-x-6 text-[16px] font-normal leading-6 text-white sm:text-[12px]">
-             If you have some questions, please contact Luis Pedro Coelho(luis@luispedro.org) and Shaojun Pan(shaojun1997777@gmail.com).
-            </p>
-          </div>
-
-          <div className="text-base 2xl:text-2xl">
+          <div className="text-base 2xl:text-2xl mb-12">
             <Link
-              aria-label='explore more about "Genome"'
-              href="/genomes"
-              className="hover:shadow-buttonShadow-type3 mt-4 rounded-sm border border-white bg-transparent px-6 py-2.5 text-white hover:border-buttonColor-type3 hover:bg-white hover:text-textColor-blue"
+                aria-label='explore more about "Genome"'
+                href="/genomes"
+                className="hover:shadow-buttonShadow-type3 mt-4 rounded-sm border border-white bg-transparent px-6 py-2.5 text-white hover:border-buttonColor-type3 hover:bg-white hover:text-textColor-blue"
             >
               {buttonName}
             </Link>
+          </div>
+          <div className="pb-6 sm:pb-10 md:pb-12">
+            <ul className="list-disc pl-4">
+              {content.map((item, index) =>
+                  <li key={index}
+                      className="font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[16px] md:leading-9 2xl:text-2xl">
+                  <ReactMarkdown>{item.description}</ReactMarkdown>
+                  </li>
+              )}
+
+            </ul>
           </div>
         </div>
         <div className="w-10 flex-auto md:w-1/3"></div>
@@ -109,11 +87,55 @@ The website showcases the quality, genomic content, and taxonomic annotations of
 }
 
 export default function Home({
-  dataHero,
-}) {
-  const { title, description, buttonName, imageHero } =
-    dataHero as AttributesProps
-  const { url: urlHero, alt: altHero } = imageHero[0] as ImageProps
+                               dataHero,
+                               dataSection1,
+                               dataSection2,
+                               dataSection3,
+                               dataSection4,
+                               dataContact,
+                               dataThanks,
+                               contentThanks,
+                               dataIntroductionNew,
+                             }) {
+  const {title, description, buttonName, imageHero} =
+      dataHero as AttributesProps
+  const {url: urlHero, alt: altHero} = imageHero[0] as ImageProps
+  const {title: titleAbout, content: descriptionAbout } =
+    dataSection1 as AttributesProps
+  const { title: titleSection3, content: descriptionSection3 } =
+    dataSection3 as AttributesProps
+  const {
+    title: titleSection2,
+    description: descriptionSection2,
+    illustrationImage,
+  } = dataSection2 as AttributesProps
+
+  const { url: urlImageSection2, alt: altImageSection2 } =
+    illustrationImage[0] as ImageProps
+  const {
+    title: titleSection4,
+    description: descriptionSection4,
+    link,
+    nameLink,
+    tabs,
+    illustrationImage: imageSection4,
+  } = dataSection4 as AttributesProps
+  const { url: urlImageSection4, alt: altImageSection4 } =
+    imageSection4[0] as ImageProps
+  const { title: titleForm, description: descriptionForm } =
+    dataContact as AttributesProps
+  const {
+    title: titleThanks,
+    description: descriptionThanks,
+    linkUrl: linkUrlThanks,
+    linkString: linkStringThanks,
+  } = dataThanks as AttributesProps
+  const {
+    title: titleIndroductionNew,
+    description: descriptionIndroductionNew,
+    subTitle: subTitleIndroductionNew,
+    content: contentIndroductionNew,
+  } = dataIntroductionNew as AttributesProps
 
   // sticky effect on scroll
   const { elementWidth: width1 } = useStickyEffect('sticky1', 300)
@@ -135,12 +157,177 @@ export default function Home({
         <meta name="description" content="HomePage" />
       </Head>
       <HeroComponent
-        title={title}
-        description={description}
+        title={titleIndroductionNew}
+        description={descriptionIndroductionNew}
+        subTitle={subTitleIndroductionNew}
+        content={contentIndroductionNew}
         buttonName={buttonName}
         imageUrl={urlHero}
         imageAlt={altHero}
       />
+      <div className="bg-backgroundColor-grey">
+        <div className="max-x-[400px]:pb-1 relative grid max-w-[1920px] justify-center bg-backgroundColor-grey pb-36 pt-14 md:grid-cols-2 md:pb-[112px] md:pr-[108px] md:pt-[120px] 2xl:mx-auto">
+          <Image
+            src={imageAbout}
+            alt="image cells"
+            className="blur-2 left-0 top-0 opacity-50 md:absolute xl:opacity-100 "
+          />
+          <div className="absolute top-6 mx-4 sm:top-8 md:relative md:top-0 md:ml-[54px] lg:ml-[108px]">
+            <h2
+              className="transform text-4xl font-medium text-textColor-blue duration-700 ease-in-out lg:pl-[54px] lg:text-[52px] "
+              id="sticky1"
+              style={{ width: width1 }}
+            >
+              {titleAbout}
+            </h2>
+          </div>
+          <div className="absolute top-28 mx-4 flex flex-col items-center gap-6 sm:top-48 md:relative md:top-0 md:gap-10 xl:gap-[120px] 2xl:gap-16">
+            {descriptionAbout.map((content: ItemProps, index) => (
+              <div key={`${titleAbout}-${index}`} className="fadeIn-on-scrool">
+                <p className=" text-base leading-6 text-textColor-blue sm:text-lg  md:leading-9 lg:text-[21px]">
+                  {content.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="relative flex h-[420px] min-h-max w-full max-w-[1920px] items-center justify-center bg-backgroundColor-blue sm:h-full 2xl:mx-auto">
+          <div className="relative flex items-center justify-center md:px-10 2xl:px-0">
+            <Image
+              src={urlImageSection2}
+              alt={altImageSection2}
+              sizes="100vw"
+              width={800}
+              height={504}
+              className="backdrop-blur-[2px] backdrop-filter"
+            />
+            <div className="absolute mx-auto flex max-w-[80%] items-center justify-center sm:max-w-[70%]">
+              <div className="rounded bg-backgroundColor-greylight p-2 text-center opacity-80 sm:px-6 sm:py-10">
+                <h2 className="pb-2 text-4xl font-medium text-textColor-blue sm:pb-7 lg:text-[52px]">
+                  {titleSection2}
+                </h2>
+                <p className="leading-1 text-base text-textColor-blue sm:text-lg md:leading-9 lg:text-[21px]">
+                  {descriptionSection2}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="grid max-w-[1920px] bg-backgroundColor-grey pb-[93px] pt-14 md:grid-cols-2 md:pr-[108px] md:pt-[120px] 2xl:mx-auto">
+          <div className=" mx-4 pb-8  md:pl-[54px] md:pr-10 lg:pl-[108px] lg:text-[52px] 2xl:pr-10">
+            <h2
+              className="ease-out-in transform text-4xl font-medium text-textColor-blue duration-100 lg:text-[52px]"
+              id="sticky2"
+              style={{ width: width2 }}
+            >
+              {titleSection3}
+            </h2>
+          </div>
+          <div className="mx-4 flex flex-col items-center md:gap-10 xl:gap-36 2xl:gap-16">
+            {descriptionSection3.map((content: ItemProps, index) => (
+              <div
+                key={`${titleSection3}-${index}`}
+                className="fadeIn-on-scrool"
+              >
+                <p className="text-base leading-9 text-textColor-blue sm:text-lg lg:text-[21px]">
+                  {content.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div
+          className="relative max-w-[1920px] px-6 pb-28 pt-20 2xl:mx-auto"
+          id="sticky2-next"
+        >
+          <div className="absolute inset-0 ">
+            <Image
+              src={urlImageSection4}
+              alt={altImageSection4}
+              fill
+              className="object-cover object-center"
+            />
+            <div
+              className="h-100% absolute inset-0 z-0"
+              style={{
+                background:
+                  'linear-gradient(91deg, #001135 0%, rgba(0, 17, 53, 0.00) 100%)',
+                backdropFilter: 'blur(2px)',
+              }}
+            ></div>
+          </div>
+          <div className="relative flex h-full flex-col gap-6 lg:pl-[54px] lg:pr-[54px]">
+            <div className="md:pl-[54px]">
+              <h2 className="pb-6 text-4xl font-medium text-white md:w-1/2 lg:text-[52px]">
+                {titleSection4}
+              </h2>
+              <p className="text-base leading-9 text-white sm:text-lg md:w-1/2 lg:text-[21px]">
+                {descriptionSection4}
+              </p>
+            </div>
+            <div className="mb-4">
+              <Tabs>
+                {tabs.map((tab: TabProps) => (
+                  <Tab key={tab.name} label={tab.name}>
+                    <div className="backdrop-blur-15 grid rounded bg-opacity-50 bg-gradient-4 p-6 sm:p-[54px] lg:grid-cols-2 lg:gap-[100px]">
+                      <div>
+                        <h2 className="text-2xl font-medium leading-9 text-textColor-blue">
+                          {tab.name}
+                        </h2>
+                        {tab.content.map((item, index) => (
+                          <div
+                            key={`${tab.name}-${index}`}
+                            className="pb-5 pt-6 leading-9"
+                          >
+                            <p className="text-lg text-textColor-blue">
+                              {item.paragraph}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                      <div>
+                        <h2 className="text-2xl font-medium leading-9 text-textColor-blue">
+                          Workflow
+                        </h2>
+                        {tab.workflow.map((item, index) => (
+                          <div
+                            key={`workflow-${index}`}
+                            className="pb-5 pt-6 leading-9 text-textColor-blue"
+                          >
+                            <p className="text-lg">{item.paragraph}</p>
+                          </div>
+                        ))}
+                        <Button
+                          text={nameLink}
+                          logo={logoGithub}
+                          logoHover={logoGithubHover}
+                          url={tab.link}
+                          aria-label="explore workflow"
+                        />
+                      </div>
+                    </div>
+                  </Tab>
+                ))}
+              </Tabs>
+            </div>
+          </div>
+        </div>
+
+        {/*<div className="px-4 py-[90px] md:px-[54px] xl:px-[108px]">*/}
+        {/*  <ContactForm*/}
+        {/*    title={titleForm}*/}
+        {/*    description={descriptionForm}*/}
+        {/*    onSubmit={handleSubmitForm}*/}
+        {/*    buttonlight*/}
+        {/*    titleThanks={titleThanks}*/}
+        {/*    descriptionThanks={descriptionThanks}*/}
+        {/*    contentThanks={contentThanks}*/}
+        {/*    linkUrlThanks={linkUrlThanks}*/}
+        {/*    linkStringThanks={linkStringThanks}*/}
+        {/*    textBlueColor*/}
+        {/*  />*/}
+        {/*</div>*/}
+      </div>
     </>
   )
 }
@@ -152,9 +339,52 @@ export async function getStaticProps() {
     )
     const { data: dataHero } = matter(fileHero)
 
+    const fileSection1 = fs.readFileSync(
+      `${process.cwd()}/content/homePage/section1.md`
+    )
+    const { data: dataSection1 } = matter(fileSection1)
+
+    const fileSection2 = fs.readFileSync(
+      `${process.cwd()}/content/homePage/section2.md`
+    )
+    const { data: dataSection2 } = matter(fileSection2)
+
+    const fileSection3 = fs.readFileSync(
+      `${process.cwd()}/content/homePage/section3.md`
+    )
+    const { data: dataSection3 } = matter(fileSection3)
+
+    const fileSection4 = fs.readFileSync(
+      `${process.cwd()}/content/homePage/section4.md`
+    )
+    const { data: dataSection4 } = matter(fileSection4)
+
+    const fileContact = fs.readFileSync(
+        `${process.cwd()}/content/contactForm/datasContactForm.md`,
+        'utf-8'
+      ),
+      { data: dataContact } = matter(fileContact)
+    const filesThanks = fs.readFileSync(
+      `${process.cwd()}/content/thanks/datas.md`
+    )
+    const { data: dataThanks, content: contentThanks } = matter(filesThanks)
+
+    const filesIntroductionNew = fs.readFileSync(
+        `${process.cwd()}/content/homePage/introductionNew.md`
+    )
+    const { data: dataIntroductionNew } = matter(filesIntroductionNew)
+
     return {
       props: {
         dataHero: JSON.parse(JSON.stringify(dataHero)),
+        dataSection1: JSON.parse(JSON.stringify(dataSection1)),
+        dataSection2: JSON.parse(JSON.stringify(dataSection2)),
+        dataSection3: JSON.parse(JSON.stringify(dataSection3)),
+        dataSection4: JSON.parse(JSON.stringify(dataSection4)),
+        dataContact: JSON.parse(JSON.stringify(dataContact)),
+        dataThanks: JSON.parse(JSON.stringify(dataThanks)),
+        dataIntroductionNew: JSON.parse(JSON.stringify(dataIntroductionNew)),
+        contentThanks,
       },
     }
   } catch (error) {
