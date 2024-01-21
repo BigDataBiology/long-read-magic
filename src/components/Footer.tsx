@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import Signature from "@/components/Signature";
 
 const navigation = [
   { name: 'Genomes', href: '/genomes' },
@@ -11,6 +12,7 @@ const terms = [
 ]
 
 export function Footer() {
+  const currentYear = new Date().getFullYear()
   return (
     <footer
       className="mt-auto bg-backgroundColor-blue"
@@ -44,7 +46,10 @@ export function Footer() {
       </nav>
       <div className="border-t border-strokeColor-bluelight">
         <div className="mx-auto flex items-center justify-between  p-6 lg:max-w-7xl lg:px-8">
-          <p className="text-xs text-white sm:text-sm">@2023</p>
+          <div className="flex gap-2">
+            <Signature className={"text-white"}/>
+            <p className="text-xs text-white sm:text-sm">@{currentYear}</p>
+          </div>
           <div className="flex items-center divide-x">
             {terms.map((item, index) => (
               <div
@@ -63,6 +68,7 @@ export function Footer() {
           </div>
         </div>
       </div>
+
     </footer>
   )
 }
