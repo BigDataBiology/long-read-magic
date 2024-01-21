@@ -31,6 +31,7 @@ const HeroComponent: React.FC<AttributesProps> = ({
   imageAlt,
 
 }) => {
+  const contentItems = content as ItemProps[]
   return (
     <div className="relative h-[450px] w-full sm:h-[900px]">
       <Image
@@ -70,7 +71,7 @@ const HeroComponent: React.FC<AttributesProps> = ({
           </div>
           <div className="pb-6 sm:pb-10 md:pb-12">
             <ul className="list-disc pl-4">
-              {content.map((item, index) =>
+              {contentItems.map((item, index) =>
                   <li key={index}
                       className="font-inter gap-x-6 text-sm font-normal leading-6 text-white sm:text-[16px] md:leading-9 2xl:text-2xl">
                   <ReactMarkdown>{item.description}</ReactMarkdown>
