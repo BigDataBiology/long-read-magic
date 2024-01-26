@@ -166,7 +166,7 @@ export default function Home({
         imageUrl={urlHero}
         imageAlt={altHero}
       />
-      
+
         {/* <div className="bg-backgroundColor-grey"> */}
         {/*   <div className="max-x-[400px]:pb-1 relative grid max-w-[1920px] justify-center bg-backgroundColor-grey pb-36 pt-14 md:grid-cols-2 md:pb-[112px] md:pr-[108px] md:pt-[120px] 2xl:mx-auto"> */}
         {/*     <Image */}
@@ -329,7 +329,7 @@ export default function Home({
         {/*    textBlueColor*/}
         {/*  />*/}
         {/*</div>*/}
-      </div>
+      {/*</div>*/}
     </>
   )
 }
