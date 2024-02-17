@@ -65,7 +65,7 @@ export function detectGenomeQuality(genome: GenomeDetailsShortened | GenomeDetai
     if (genome.completeness > 90 && genome.contamination < 5 && genome.passGnuc === true && genome.trna >= 18 && genome.s16 >= 1 && genome.s5 >= 1 && genome.s23 >= 1) {
         return GenomeQuality.High;
     }
-    if (genome.completeness >= 50 && genome.completeness <= 90 && genome.contamination < 10) {
+    if (genome.completeness >= 50 && genome.contamination < 10) {
         return GenomeQuality.Medium
     }
     if (genome.completeness < 50 && genome.contamination < 10) {

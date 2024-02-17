@@ -9,6 +9,7 @@ import Image from "next/image";
 import highQualityBins from "../../../public/images/high-quality-bin.svg"
 import mediumQualityBins from "../../../public/images/medium-quality-bin.svg"
 import lowQualityBins from "../../../public/images/low-quality-bin.svg"
+import {Checkbox} from "@/components/GenomesTable/Checkbox";
 
 
 export const defaultFilterState: GenomeOverviewFilterState = {
@@ -24,7 +25,10 @@ export const defaultFilterState: GenomeOverviewFilterState = {
     s5Min: 0,
     s5Max: 100,
     s23Min: 0,
-    s23Max: 100
+    s23Max: 100,
+    excludeLowQuality: false,
+    excludeMediumQuality: false,
+    excludeHighQuality: false
 };
 
 const highQualityFilterState = {
@@ -35,10 +39,10 @@ const highQualityFilterState = {
     trnaMin: 18,
     s16Min: 1,
     s5Min: 1,
-    s23Min: 1
+    s23Min: 1,
 }
-const mediumQualityFilterState = {...defaultFilterState, completenessMin: 50, completenessMax: 90, contaminationMax: 10.0}
-const lowQualityFilterState = {...defaultFilterState, completenessMax: 50.0, contaminationMax: 10.0}
+const mediumQualityFilterState = {...defaultFilterState, completenessMin: 50, contaminationMax: 10.0, excludeHighQuality: true}
+const lowQualityFilterState = {...defaultFilterState, completenessMax: 50.0, contaminationMax: 10.0, excludeMediumQuality: true, excludeHighQuality: true}
 
 export type FiltersProps = {
     className?: string;
@@ -136,6 +140,15 @@ export const Filters: FC<FiltersProps> = ({className}) => {
                                      onMaxChange={(value) => setFilters({...filters, s23Max: value})}
                                      minBoundary={0} maxBoundary={1000}/>
                     </div>
+                </div>
+
+                <div className="flex flex-col gap-4 mb-8">
+                <Checkbox  label={texts.excludeLowQualityBins} checked={filters.excludeLowQuality}
+                          onChange={(value) => setFilters({...filters, excludeLowQuality: value})}/>
+                <Checkbox label={texts.excludeMediumQualityBins} checked={filters.excludeMediumQuality}
+                          onChange={(value) => setFilters({...filters, excludeMediumQuality: value})}/>
+                <Checkbox label={texts.excludeHighQualityBins} checked={filters.excludeHighQuality}
+                          onChange={(value) => setFilters({...filters, excludeHighQuality: value})}/>
                 </div>
 
                 <div>

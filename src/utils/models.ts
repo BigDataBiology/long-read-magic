@@ -163,5 +163,8 @@ export type GenomeOverviewFilterState = {
     s5Max: number;
     s23Min: number;
     s23Max: number;
+    excludeLowQuality: boolean;
+    excludeMediumQuality: boolean;
+    excludeHighQuality: boolean;
 };
 

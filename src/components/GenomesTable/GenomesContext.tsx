@@ -1,7 +1,21 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { GenomeContextType, GenomeDetailsShortened, GenomeOverviewFilterState, Manifest, Project, Sample } from "@/utils/models";
+import {
+    GenomeContextType,
+    GenomeDetailsShortened,
+    GenomeOverviewFilterState,
+    GenomeQuality,
+    Manifest,
+    Project,
+    Sample
+} from "@/utils/models";
 import manifestJson from "public/shortened-data-manifest.json"
-import { countGenomesQuality, appendDataToManifestItems, sortByFieldName, flattenManifest } from "@/utils/utils";
+import {
+    countGenomesQuality,
+    appendDataToManifestItems,
+    sortByFieldName,
+    flattenManifest,
+    detectGenomeQuality
+} from "@/utils/utils";
 import { defaultPageSize } from "@/components/GenomesTable/Pagination";
 import { defaultFilterState } from "@/components/GenomesTable/Filters";
 import { GenomeOverviewTexts } from "@/utils/texts";
@@ -112,7 +126,7 @@ export const useGenomeContext = () => useContext(GenomeContext);
 
 
 function filter(items: GenomeDetailsShortened[], filters: GenomeOverviewFilterState): GenomeDetailsShortened[] {
-    return items.filter((item) => (
+    let filteredItems = items.filter((item) => (
         item.completeness >= filters.completenessMin && item.completeness <= filters.completenessMax &&
         item.contamination >= filters.contaminationMin && item.contamination <= filters.contaminationMax &&
         item.trna >= filters.trnaMin && item.trna <= filters.trnaMax &&
@@ -120,5 +134,23 @@ function filter(items: GenomeDetailsShortened[], filters: GenomeOverviewFilterSt
         item.s5 >= filters.s5Min && item.s5 <= filters.s5Max &&
         item.s23 >= filters.s23Min && item.s23 <= filters.s23Max &&
         (filters.passGnuc === undefined || item.passGnuc === filters.passGnuc)))
+
+    if (filters.excludeHighQuality){
+        filteredItems = filteredItems.filter((item) => (
+            detectGenomeQuality(item) !== GenomeQuality.High
+        ))
+    }
+    if (filters.excludeMediumQuality){
+        filteredItems = filteredItems.filter((item) => (
+            detectGenomeQuality(item) !== GenomeQuality.Medium
+        ))
+    }
+    if (filters.excludeLowQuality){
+        filteredItems = filteredItems.filter((item) => (
+            detectGenomeQuality(item) !== GenomeQuality.Low
+        ))
+    }
+
+    return filteredItems;
 }
 

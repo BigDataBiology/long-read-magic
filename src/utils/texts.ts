@@ -38,6 +38,9 @@ export const GenomeOverviewTexts = {
         highQualityGenomesCountLabel: "High quality genomes: ",
         mediumQualityGenomesCountLabel: "Medium quality genomes: ",
         lowQualityGenomesCountLabel: "Low quality genomes: ",
+        excludeLowQualityBins: "Exclude low quality bins",
+        excludeMediumQualityBins: "Exclude medium quality bins",
+        excludeHighQualityBins: "Exclude high quality bins",
     },
     pagination: {
         itemsPerPage: "Items per page",
