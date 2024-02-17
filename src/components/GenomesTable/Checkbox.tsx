@@ -15,7 +15,7 @@ export const Checkbox: FC<CheckboxProps> = ({onChange, checked, label}) => {
     return (
         <>
             <div className="flex cursor-pointer">
-                <input type="checkbox" className="w-6 mr-2" id={label} checked={checked} onChange={onValueChange}/>
+                <input type="checkbox" className="w-6 mr-2 cursor-pointer" id={label} checked={checked} onChange={onValueChange}/>
                 <label className="text-center cursor-pointer" htmlFor={label}>{label}</label>
             </div>
         </>
